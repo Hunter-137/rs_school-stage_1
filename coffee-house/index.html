@@ -3,18 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffe House</title>
+    <title>Coffee House</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./icon/favicon.ico" type="image/x-icon">
     <script src="./js/index.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Hello!</h1>
-    </header>
+    <div class="container">
 
-    <main></main>
+        <header class="header">
+            <div class="header-menu-wrapper">
+                <div class="header-menu-logo">
+                    <img src="./icon/logo.png" alt="logo">
+                </div>
+                <nav class="header-menu-nav">
+                    <ul class="header-menu-nav-list">
+                        <li class="header-menu-nav-list-item">Favorite coffee</li>
+                        <li class="header-menu-nav-list-item">About</li>
+                        <li class="header-menu-nav-list-item">Mobile app</li>
+                        <li class="header-menu-nav-list-item">Contact us</li>
+                    </ul>
+                </nav>
+                <button class="header-menu-btn-item">
+                    <span class="header-menu-btn-item-text">Menu</span>
+                </button>
+            </div>
+            <div class="header-content">
+                <video class="header-content-item" autoplay muted loop>
+                    <source src="./video/header_video_(2160p).mp4" type="video/mp4">
+                </video>
+                <section class="header-content-title-wrapper">
+                    <h1 class="header-content-title">
+                        <span class="accent__text">Enjoy</span> premium coffee at our charming cafe
+                    </h1>
+                    <p class="header-content-text">
+                        With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.
+                    </p>
+                    <button class="header-content-btn">
+                        <span class="header-content-btn-text">Menu</span>
+                        <img class="header-content-btn-icon" src="./icon/coffee-cup.svg" alt="coffee-cup">
+                    </button>
+                </section>
+            </div>
+        </header>
+        
+        <main class="main"></main>
+        
+        <footer class="footer">Игого</footer>
 
-    <footer></footer>
+    </div>
 </body>
 </html>
