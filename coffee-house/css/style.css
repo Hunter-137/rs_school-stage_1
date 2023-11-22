@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: Inter;
+  color: #403f3d;
 }
 
 html,
@@ -20,6 +21,7 @@ body {
   width: 1440px;
   margin: 0 auto;
   padding: 20px 40px 40px 40px;
+  box-sizing: border-box;
 }
 
 .header {
@@ -84,7 +86,6 @@ body {
 }
 
 .header-menu-btn-item-text {
-  color: #403f3d;
   position: relative;
 }
 
@@ -119,10 +120,12 @@ body {
 
 .header-content {
   position: relative;
+  max-width: 1380px;
+  height: 644px;
+  margin: 20px auto 0;
 }
 
 .header-content-item {
-  margin-top: 20px;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -132,7 +135,7 @@ body {
 
 .header-content-title-wrapper {
   position: absolute;
-  top: 100px;
+  top: 96px;
   left: 100px;
   max-width: 530px;
   color: #e1d4c9;
@@ -146,10 +149,12 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: 105%;
+  color: #e1d4c9;
 }
 
 .accent__text {
   color: #b0907a;
+  font-style: italic;
 }
 
 .header-content-text {
@@ -157,6 +162,7 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
+  color: #e1d4c9;
 }
 
 .header-content-btn {
@@ -172,7 +178,6 @@ body {
 }
 
 .header-content-btn-text {
-  color: #403f3d;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -204,6 +209,191 @@ body {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
+}
+
+.main-favorite__coffee {
+  margin-top: 100px;
+}
+
+.main-favorite__coffee-title {
+  text-align: center;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 75px */
+}
+
+.main-favorite__coffee-carousel-wrapper {
+  margin-top: 40px;
+}
+
+.main-favorite__coffee-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.main-favorite__coffee-carousel-btn {
+  background-color: transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 1px solid #665f55;
+  transition-duration: 500ms;
+}
+
+.carousel-btn__left {
+  position: absolute;
+  left: 0;
+}
+
+.carousel-btn__right {
+  position: absolute;
+  right: 0;
+}
+
+.main-favorite__coffee-carousel-btn-item {
+  transition-duration: 500ms;
+}
+
+.main-favorite__coffee-carousel-btn:hover {
+  background-color: #665f55;
+}
+
+.main-favorite__coffee-carousel-btn:hover
+  .main-favorite__coffee-carousel-btn-item {
+  filter: brightness(0) invert(1);
+}
+
+.main-favorite__coffee-carousel.slide_1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-favorite__coffee-carousel-item {
+  width: 480px;
+  height: 480px;
+}
+
+.main-favorite__coffee-carousel-title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 30px */
+  margin-top: 20px;
+}
+
+.main-favorite__coffee-carousel-subtitle {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  margin-top: 16px;
+  max-width: 480px;
+  text-align: center;
+}
+
+.main-favorite__coffee-carousel-price {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 30px */
+  margin-top: 16px;
+}
+
+.main-favorite__coffee-carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.control {
+  width: 40px;
+  height: 4px;
+  background-color: #c1b6ad;
+  border-radius: 100px;
+}
+
+.main-favorite__coffee-carousel-controls_1 {
+  background-color: #665f55;
+}
+
+.main-about-title {
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 75px */
+  margin-top: 100px;
+}
+
+.main-about-item-box-wrapper {
+  margin-top: 40px;
+  max-width: 1360px;
+  max-height: 1060px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.main-about-item-box {
+  border-radius: 20px;
+}
+
+.about-item-box_1 {
+  order: 1;
+  width: 660px;
+  height: 590px;
+}
+
+.about-item-box_2 {
+  order: 3;
+  width: 660px;
+  height: 430px;
+}
+
+.about-item-box_3 {
+  order: 2;
+  width: 660px;
+  height: 430px;
+}
+
+.about-item-box_4 {
+  order: 4;
+  width: 660px;
+  height: 590px;
+  position: relative;
+  top: -160px;
+}
+
+.main-about-item {
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.about-item_1 {
+  width: 660px;
+  height: 590px;
+}
+
+.about-item_2 {
+  width: 660px;
+  height: 430px;
+}
+
+.about-item_3 {
+  width: 660px;
+  height: 430px;
+}
+
+.about-item_4 {
+  width: 660px;
+  height: 590px;
+  position: absolute;
 }
 
 .footer {
