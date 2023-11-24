@@ -94,6 +94,7 @@ body {
 
 .header-menu-btn-item-text {
   position: relative;
+  text-decoration: none;
 }
 
 .header-menu-btn-item::after {
@@ -628,6 +629,7 @@ path {
   color: #e1d4c9;
   text-decoration: none;
   position: relative;
+  padding-bottom: 2px;
 }
 
 .footer-contact-link::after {
