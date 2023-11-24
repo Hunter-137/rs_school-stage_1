@@ -1,0 +1,101 @@
+@import "./style.css";
+
+.header-menu-btn-item {
+  cursor: default;
+}
+
+.header-menu-btn-item-text {
+  cursor: default;
+}
+
+.header-menu-btn-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 2px;
+  background-color: #403f3d;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+  opacity: 1;
+  cursor: default;
+}
+
+.main-menu {
+  margin-top: 20px;
+}
+
+.main-menu-title {
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 75px */
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.main-menu-btn-wrapper {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.main-menu-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 8px 8px;
+  border: 1px solid #c1b6ad;
+  background-color: transparent;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  transition-duration: 1s;
+}
+
+.main-menu-btn-item > rect {
+  transition-duration: 1s;
+  fill: #c1b6ad;
+}
+
+.main-menu-btn-item-text {
+  color: #403f3d;
+  transition-duration: 1s;
+}
+
+.main-menu-btn:hover {
+  background-color: #665f55;
+}
+
+.main-menu-btn:hover .main-menu-btn-item-text {
+  color: #e1d4c9;
+}
+
+.main-menu-btn:hover rect {
+  fill: #e1d4c9;
+}
+
+.main-menu-btn.active {
+  background-color: #665f55;
+  transition-duration: 1s;
+}
+
+.main-menu-btn-item.active rect {
+  fill: #e1d4c9;
+  transition-duration: 1s;
+}
+
+.main-menu-btn-item-text.active {
+  color: #e1d4c9;
+  transition-duration: 1s;
+}
