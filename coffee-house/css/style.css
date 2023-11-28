@@ -19,7 +19,7 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 20px 40px 40px 40px;
   box-sizing: border-box;
@@ -681,4 +681,36 @@ path {
   font-weight: 600;
   line-height: 150%; /* 24px */
   color: #e1d4c9;
+}
+
+/* ************************* Адаптив ******************************************************* */
+
+@media (max-width: 1439px) {
+  .main-about-item-box-wrapper {
+    max-height: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-item-box_3 {
+    display: none;
+  }
+
+  .about-item-box_2 {
+    display: none;
+  }
+
+  .about-item-box_4 {
+    top: 0;
+  }
+
+  .main-mobile__app {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
 }
