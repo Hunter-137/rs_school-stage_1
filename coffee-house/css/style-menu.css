@@ -88,6 +88,7 @@
 .main-menu-btn.active {
   background-color: #665f55;
   transition-duration: 1s;
+  cursor: default;
 }
 
 .main-menu-btn-item.active rect {
@@ -118,6 +119,7 @@
   height: 506px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .main-offer-content {
@@ -135,7 +137,7 @@
   transition-duration: 1s;
 }
 
-.main-offer-content-item:hover {
+.main-offer-wrapper:hover .main-offer-content-item {
   transform: scale(1);
 }
 
