@@ -33,6 +33,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .header-menu-logo {
@@ -650,7 +651,7 @@ path {
 }
 
 .footer-contact {
-  width: 530px;
+  max-width: 530px;
   padding-bottom: 13px;
 }
 
@@ -730,7 +731,7 @@ path {
   color: #e1d4c9;
 }
 
-/* ************************* Адаптив 1439px **************************************************** */
+/* ************************* Адаптив пк **************************************************** */
 
 @media (max-width: 1439px) {
   .main-about-item-box-wrapper {
@@ -759,12 +760,19 @@ path {
 
   .footer {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 
-/* ************************* Адаптив 768px **************************************************** */
+/* ************************* Адаптив планшет **************************************************** */
 
 @media (max-width: 768px) {
+  .header-content-title-wrapper {
+    top: 100px;
+    left: 60px;
+    right: 60px;
+  }
+
   .header-menu-burger-btn {
     display: block;
   }
@@ -775,7 +783,7 @@ path {
     text-align: center;
     position: absolute;
     top: -620px;
-    width: 90%;
+    width: 100%;
     height: 645px;
     padding: 60px 40px;
     box-sizing: border-box;
@@ -785,7 +793,7 @@ path {
   }
 
   .header-menu-nav.active {
-    top: 100px;
+    top: 80px;
   }
 
   .header-menu-nav-list {
@@ -899,5 +907,90 @@ path {
   .footer-contact-link:hover::after {
     width: 0;
     opacity: 0;
+  }
+}
+
+/* ************************* Адаптив телефон **************************************************** */
+@media (max-width: 715px) {
+  .container {
+    padding: 20px 16px 40px;
+  }
+
+  .header-content-title-wrapper {
+    top: 60px;
+    left: 16px;
+    right: 16px;
+  }
+
+  .header-content-title {
+    font-size: 42px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 115%; /* 48.3px */
+  }
+
+  .main-favorite__coffee-title {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 40px */
+  }
+
+  .main-favorite__coffee-carousel-item {
+    width: 348px;
+    height: 348px;
+  }
+
+  .main-favorite__coffee-carousel-btn {
+    display: none;
+  }
+
+  .main-about-title {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 40px */
+  }
+
+  .main-about-item-box {
+    height: 590px;
+  }
+
+  .main-mobile__app-offer-title {
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 125%; /* 40px */
+  }
+
+  .main-mobile__app-offer-btn-wrapper {
+    flex-direction: column;
+  }
+
+  .main-mobile__app-screens {
+    width: 348px;
+    height: 348px;
+  }
+
+  .main-mobile__app-screens-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .footer {
+    padding: 60px 16px;
+    gap: 40px;
+  }
+
+  .footer-slogan {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 40px */
+  }
+
+  .footer-contact {
+    max-width: 530px;
   }
 }
