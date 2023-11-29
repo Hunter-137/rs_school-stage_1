@@ -478,7 +478,7 @@ body {
   border: 1px solid #665f55;
   background-color: transparent;
   padding: 12px 20px;
-  width: 200px;
+  width: 158px;
   cursor: pointer;
   transition-duration: 1s;
 }
@@ -521,7 +521,7 @@ body {
   border: 1px solid #665f55;
   background-color: transparent;
   padding: 12px 20px;
-  width: 200px;
+  width: 158px;
   cursor: pointer;
   transition-duration: 1s;
 }
@@ -592,7 +592,7 @@ body {
   display: flex;
   max-width: 1360px;
   padding: 100px;
-  justify-content: space-around;
+  justify-content: flex;
   align-items: center;
   gap: 100px;
   align-self: stretch;
@@ -892,6 +892,10 @@ path {
     color: #403f3d;
   }
 
+  .footer {
+    padding: 95px 100px 92px 57px;
+  }
+
   .footer-link-wrapper:hover {
     background-color: transparent;
   }
@@ -992,5 +996,19 @@ path {
 
   .footer-contact {
     max-width: 530px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-content {
+    height: 552px;
+  }
+
+  .main-mobile__app {
+    gap: 40px;
+  }
+
+  .footer {
+    padding: 60px 16px 51px;
   }
 }
