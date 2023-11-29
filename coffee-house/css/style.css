@@ -147,6 +147,7 @@ body {
   position: relative;
   z-index: 3;
   display: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .header-menu-burger-btn::before {
@@ -221,6 +222,7 @@ body {
 .header-content-btn-link {
   width: 200px;
   height: 64px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .header-content-btn {
@@ -299,6 +301,7 @@ body {
   cursor: pointer;
   border: 1px solid #665f55;
   transition-duration: 500ms;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .carousel-btn__left {
@@ -481,6 +484,7 @@ body {
   width: 158px;
   cursor: pointer;
   transition-duration: 1s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .btn-app__store-text-wrapper {
@@ -524,6 +528,7 @@ body {
   width: 158px;
   cursor: pointer;
   transition-duration: 1s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .btn-google__play-text-wrapper {
@@ -592,7 +597,7 @@ body {
   display: flex;
   max-width: 1360px;
   padding: 100px;
-  justify-content: flex;
+  justify-content: flex-start;
   align-items: center;
   gap: 100px;
   align-self: stretch;
@@ -619,6 +624,10 @@ body {
 .footer-link-container {
   display: flex;
   gap: 12px;
+}
+
+.footer-link {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .footer-link-wrapper {
@@ -677,6 +686,7 @@ path {
   text-decoration: none;
   position: relative;
   padding-bottom: 2px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .footer-contact-link::after {
