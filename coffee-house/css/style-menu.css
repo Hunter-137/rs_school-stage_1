@@ -111,6 +111,7 @@
   flex-wrap: wrap;
   margin-top: 37px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .main-offer-wrapper {
@@ -179,4 +180,78 @@
   line-height: 125%; /* 30px */
   color: #403f3d;
   margin-top: 12px;
+}
+
+.main-offer-refresh__btn {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #665f55;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  display: none;
+}
+
+/* ************************* Адаптив 1439px **************************************************** */
+
+@media (max-width: 1439px) {
+  .main-offer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-menu-btn:hover {
+    background-color: transparent;
+  }
+
+  .main-menu-btn:hover .main-menu-btn-item-text {
+    color: #403f3d;
+  }
+
+  .main-menu-btn:hover rect {
+    fill: #c1b6ad;
+  }
+
+  .main-menu-btn.active {
+    background-color: #665f55;
+    transition-duration: 1s;
+    cursor: default;
+  }
+
+  .main-menu-btn-item.active rect {
+    fill: #e1d4c9;
+    transition-duration: 1s;
+  }
+
+  .main-menu-btn.active:hover .main-menu-btn-item-text.active {
+    color: #e1d4c9;
+  }
+
+  .main-offer-wrapper._5 {
+    display: none;
+  }
+
+  .main-offer-wrapper._6 {
+    display: none;
+  }
+
+  .main-offer-wrapper._7 {
+    display: none;
+  }
+
+  .main-offer-wrapper._8 {
+    display: none;
+  }
+
+  .main-offer-content-item {
+    transform: scale(1);
+  }
+
+  .main-offer-refresh__btn {
+    display: block;
+    margin: 40px auto 0;
+  }
 }
