@@ -48,6 +48,7 @@ body {
 .header-menu-nav-list {
   display: flex;
   gap: 40px;
+  margin-left: 40px;
 }
 
 .header-menu-nav-list-item {
@@ -809,6 +810,7 @@ path {
   .header-menu-nav-list {
     flex-direction: column;
     gap: 60px;
+    margin-left: 0;
   }
 
   .header-menu-nav-list-item {
