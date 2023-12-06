@@ -27,6 +27,7 @@ body {
 
 .header {
   width: 100%;
+  overflow: hidden;
 }
 
 .header-menu-wrapper {
@@ -339,12 +340,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* transform: translateX(-480px); */
+  transition-duration: 1s;
+  pointer-events: none;
+  user-select: none;
 }
 
 .main-favorite__coffee-carousel-item {
   width: 480px;
   height: 480px;
+  pointer-events: none;
 }
 
 .main-favorite__coffee-carousel-title {
@@ -353,6 +357,8 @@ body {
   font-weight: 600;
   line-height: 125%; /* 30px */
   margin-top: 20px;
+  pointer-events: none;
+  user-select: none;
 }
 
 .main-favorite__coffee-carousel-subtitle {
@@ -363,6 +369,8 @@ body {
   margin-top: 16px;
   max-width: 480px;
   text-align: center;
+  pointer-events: none;
+  user-select: none;
 }
 
 .main-favorite__coffee-carousel-price {
@@ -371,6 +379,8 @@ body {
   font-weight: 600;
   line-height: 125%; /* 30px */
   margin-top: 16px;
+  pointer-events: none;
+  user-select: none;
 }
 
 .main-favorite__coffee-carousel-controls {
@@ -378,6 +388,8 @@ body {
   justify-content: center;
   gap: 12px;
   margin-top: 40px;
+  pointer-events: none;
+  user-select: none;
 }
 
 .control {
@@ -385,9 +397,10 @@ body {
   height: 4px;
   background-color: #c1b6ad;
   border-radius: 100px;
+  transition-duration: 500ms;
 }
 
-.main-favorite__coffee-carousel-controls_1 {
+.control.active {
   background-color: #665f55;
 }
 
@@ -811,7 +824,8 @@ path {
     justify-content: center;
     text-align: center;
     position: absolute;
-    top: -620px;
+    left: 768px;
+    top: 80px;
     width: 100%;
     height: 645px;
     padding: 60px 40px;
@@ -822,7 +836,7 @@ path {
   }
 
   .header-menu-nav.active {
-    top: 80px;
+    left: 0;
   }
 
   .header-menu-nav-list {
@@ -968,6 +982,10 @@ path {
     font-style: normal;
     font-weight: 600;
     line-height: 125%; /* 40px */
+  }
+
+  .main-favorite__coffee-carousel {
+    max-width: 348px;
   }
 
   .main-favorite__coffee-carousel-item {
