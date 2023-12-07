@@ -400,8 +400,14 @@ body {
   transition-duration: 500ms;
 }
 
-.control.active {
+/* .control.active {
   background-color: #665f55;
+} */
+
+.control-progress__bar {
+  background-color: #665f55;
+  height: 4px;
+  width: 0;
 }
 
 .main-about-title {
