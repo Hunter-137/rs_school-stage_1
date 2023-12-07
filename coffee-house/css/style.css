@@ -28,6 +28,7 @@ body {
 .header {
   width: 100%;
   overflow: hidden;
+  transition-duration: 1s;
 }
 
 .header-menu-wrapper {
@@ -400,14 +401,18 @@ body {
   transition-duration: 500ms;
 }
 
-/* .control.active {
-  background-color: #665f55;
-} */
-
 .control-progress__bar {
   background-color: #665f55;
   height: 4px;
   width: 0;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+}
+
+.control-progress__bar.active {
+  width: 100%;
+  transition-duration: 5s;
+  transition-timing-function: linear;
 }
 
 .main-about-title {

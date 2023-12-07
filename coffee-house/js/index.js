@@ -65,11 +65,57 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // функция остановки слайдера
-  function stopCarousel() {
+  function repeatStartCarousel() {
     clearInterval(intervalId); // очистить время интервала
+    // присваивается интервал = циклично повторять функцию каждые 5000ms
+    intervalId = setInterval(function () {
+      // текущая позиция слайда = текущая позиция слайда + (либо 348, либо 480... зависит от ширины экрана)
+      // mediaQuery715px.matches ? 348 : 480; — экран 715px и меньше? тогда 348px к смещению слайда, иначе 480px
+      currentSlidePosition += mediaQuery715px.matches ? 348 : 480;
+      updateSlidePosition(); // функция по смещению слайдера
+    }, 5000); // временной интервал повторения функции в миллисекундах
   }
 
   startCarousel(); // запуск цикла по интервалу
+
+  carouselContainer.addEventListener("touchstart", function (event) {
+    isDragging = true; // флаг перетаскивания true
+    draggingStartPosition = event.touches[0].clientX; // начальная позиция равна точке клика по ширине экрана браузера
+  });
+
+  // прослушка на движение мыши
+  carouselContainer.addEventListener("touchmove", function (event) {
+    // если флаг true
+    if (isDragging) {
+      // то: если функция не воспроизводится прямо сейчас
+      if (!throttleTimeout) {
+        // то установить индикатору функцию с временем выполнения:
+        throttleTimeout = setTimeout(() => {
+          // рассчитать позицию между кликом по координате Х и текущей позицией
+          // например клик был на точке в Х = 200px по ширине, мышка двинулась вправо до Х = 300
+          // то получится 200 - 300 = -100
+          deltaX = event.touches[0].clientX - draggingStartPosition;
+          // теперь если итог у нас больше нуля
+          if (deltaX > 0) {
+            // то передвигаем слайд на 480px вправо
+            currentSlidePosition -= mediaQuery715px.matches ? 348 : 480;
+          } else {
+            // в противном случае на 480px влево
+            currentSlidePosition += mediaQuery715px.matches ? 348 : 480;
+          }
+          // console.log(deltaX); просто проверка текущего значения
+          updateSlidePosition(); // обновляем слайд
+          throttleTimeout = null; // сбрасываем индикатор обратно в null
+        }, delay); // установка времени выполнения функции
+      }
+    }
+  });
+
+  // если кнопка мыши отпущена
+  carouselContainer.addEventListener("touchend", function (event) {
+    isDragging = false; // флаг перетаскивания false
+    repeatStartCarousel();
+  });
 
   // прослушка на кликнутую кнопку мыши
   carouselContainer.addEventListener("mousedown", function (event) {
@@ -92,10 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
           // теперь если итог у нас больше нуля
           if (deltaX > 0) {
             // то передвигаем слайд на 480px вправо
-            currentSlidePosition -= 480;
+            currentSlidePosition -= mediaQuery715px.matches ? 348 : 480;
           } else {
             // в противном случае на 480px влево
-            currentSlidePosition += 480;
+            currentSlidePosition += mediaQuery715px.matches ? 348 : 480;
           }
           // console.log(deltaX); просто проверка текущего значения
           updateSlidePosition(); // обновляем слайд
@@ -108,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // если кнопка мыши отпущена
   carouselContainer.addEventListener("mouseup", function (event) {
     isDragging = false; // флаг перетаскивания false
+    repeatStartCarousel();
   });
 
   // если мышка задела элемент — флаг также false
@@ -122,26 +169,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // при клике на кнопку положение слайда смещается
   carouselLeftBtn.addEventListener("click", function () {
-    currentSlidePosition -= 480;
+    currentSlidePosition -= mediaQuery715px.matches ? 348 : 480;
     updateSlidePosition(); // запуск функции смещения
+    repeatStartCarousel(); // перезапустить функцию авто-слайдера
   });
 
   // при клике на кнопку положение слайда смещается
   carouselRightBtn.addEventListener("click", function () {
-    currentSlidePosition += 480;
+    currentSlidePosition += mediaQuery715px.matches ? 348 : 480;
     updateSlidePosition(); // запуск функции смещения
+    repeatStartCarousel(); // перезапустить функцию авто-слайдера
   });
 
   // функция по передвижению слайдера
   const updateSlidePosition = () => {
-    // если текущая позиция слайда выходит больше 960px
-    if (currentSlidePosition > 960) {
+    // если текущая позиция слайда выходит больше 960px (или 696 в зависимости от размера экрана)
+    if (currentSlidePosition > (mediaQuery715px.matches ? 696 : 960)) {
       // то сбросить до начального состояния
       currentSlidePosition = 0;
       // но если текущая позиция слайда меньше нуля
     } else if (currentSlidePosition < 0) {
-      // то назначить ему последний слайд
-      currentSlidePosition = 960;
+      // то назначить ему последний слайд (в зависимости от размера экрана 3 слайд будет расположен по-разному)
+      currentSlidePosition = mediaQuery715px.matches ? 696 : 960;
     }
 
     // перебор каждого слайдера
@@ -153,17 +202,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // перебор каждого контроллера
     progressBarControls.forEach(function (control, index) {
       // если индекс текущего контроллера * 480(px) равен текущей позиции слайда
-      if (index * 480 === currentSlidePosition) {
+      if (
+        index * (mediaQuery715px.matches ? 348 : 480) ===
+        currentSlidePosition
+      ) {
         // то добавить к нему класс active
-        // control.classList.add("active");
-        control.style.width = `${control.offsetWidth + 100}%`;
-        control.style.transition = `width 5s linear`;
+        control.classList.add("active");
       } else {
         // а у остальных убрать
-        // control.classList.remove("active");
-        control.style.width = 0;
-        control.style.transition = "width 200ms linear";
+        control.classList.remove("active");
       }
     });
   };
+
+  // начать выполнение функции после загрузки всей страницы
+  // нужно для того, чтобы в самом начале первый слайд также имел
+  // интерактивный контроллер
+  window.addEventListener("load", updateSlidePosition);
 });
