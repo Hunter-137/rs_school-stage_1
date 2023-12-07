@@ -41,6 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ".main-favorite__coffee-carousel-wrapper"
   ); // контейнер слайдера
   const carouselControls = document.querySelectorAll(".control"); // контроллеры слайдера
+  const progressBarControls = document.querySelectorAll(
+    ".control-progress__bar"
+  ); // статус бар контроллера
 
   let currentSlidePosition = 0; // начальное положение слайда
   let isDragging = false; // флаг "перетаскивания мышкой"
@@ -148,14 +151,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // перебор каждого контроллера
-    carouselControls.forEach(function (control, index) {
+    progressBarControls.forEach(function (control, index) {
       // если индекс текущего контроллера * 480(px) равен текущей позиции слайда
       if (index * 480 === currentSlidePosition) {
         // то добавить к нему класс active
-        control.classList.add("active");
+        // control.classList.add("active");
+        control.style.width = `${control.offsetWidth + 100}%`;
+        control.style.transition = `width 5s linear`;
       } else {
         // а у остальных убрать
-        control.classList.remove("active");
+        // control.classList.remove("active");
+        control.style.width = 0;
+        control.style.transition = "width 200ms linear";
       }
     });
   };
