@@ -34,8 +34,33 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ********************************** КАРТОЧКИ ИЗ JSON **********************************
+  // ***********************************       +         **********************************
+  // *********************************** МОДАЛЬНОЕ ОКНО ***********************************
   const cardButtons = document.querySelectorAll(".main-menu-btn"); // кнопки выбора раздела
   const cardWrapper = document.querySelector(".main-offer"); // обёртка карточки товара
+  const modal = document.querySelector(".modal"); // модальное окно
+  const modalCloseBtn = document.querySelector(".modal-description-close__btn"); // кнопка Закрыть модальное окно
+  const modalImg = document.querySelector(".modal-img__container-item"); // картинка из модального окна
+  const modalTitle = document.querySelector(".modal-description-title"); // название продукта
+  const modalSubtitle = document.querySelector(".modal-description-subtitle"); // описание продукта
+  const modalSizeSmall = document.querySelector(
+    ".modal-description-size-btn-text.small"
+  ); // размер продукта маленький
+  const modalSizeMedium = document.querySelector(
+    ".modal-description-size-btn-text.medium"
+  ); // размер продукта средний
+  const modalSizeLarge = document.querySelector(
+    ".modal-description-size-btn-text.large"
+  ); // размер продукта большой
+  const modalAdditives1 = document.querySelector(
+    ".modal-description-additives-btn-text._1"
+  ); // добавки первая
+  const modalAdditives2 = document.querySelector(
+    ".modal-description-additives-btn-text._2"
+  ); // добавки вторая
+  const modalAdditives3 = document.querySelector(
+    ".modal-description-additives-btn-text._3"
+  ); // добавки третья
 
   // загрузка данных из json файла
   async function getProductsData() {
@@ -111,6 +136,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         i += 1; // увеличить индекс итерации
       }
+
+      // находим новосозданный блок с карточкой
+      const mainOfferWrapper = document.querySelectorAll(".main-offer-wrapper");
+      // говорим что, если по какой-либо из них кликнули
+      mainOfferWrapper.forEach(function (card, index) {
+        card.addEventListener("click", function () {
+          modal.classList.add("active"); // открыть модальное окно
+          modalImg.src = `./image/coffee-${index + 1}.png`; // вставить картинку в соответствии с выбранной карточкой
+          modalTitle.textContent = `${coffeeDrinks[index].name}`; // вставить наименование продукта
+          modalSubtitle.textContent = `${coffeeDrinks[index].description}`; // вставить описание продукта
+          modalSizeSmall.textContent = `${coffeeDrinks[index].sizes.s.size}`; // вставить размер маленького продукта
+          modalSizeMedium.textContent = `${coffeeDrinks[index].sizes.m.size}`; // вставить размер среднего продукта
+          modalSizeLarge.textContent = `${coffeeDrinks[index].sizes.l.size}`; // вставить размер большого продукта
+          modalAdditives1.textContent = `${coffeeDrinks[index].additives[0].name}`; // вставить название первой добавки
+          modalAdditives2.textContent = `${coffeeDrinks[index].additives[1].name}`; // вставить название второй добавки
+          modalAdditives3.textContent = `${coffeeDrinks[index].additives[2].name}`; // вставить название третьей добавки
+        });
+      });
+      // а по кнопке Close
+      modalCloseBtn.addEventListener("click", function () {
+        modal.classList.remove("active"); // закрыть модальное окно
+      });
     });
 
     // то же самое, только для второй кнопки tea
@@ -169,6 +216,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         i += 1;
       }
+
+      // находим новосозданный блок с карточкой
+      const mainOfferWrapper = document.querySelectorAll(".main-offer-wrapper");
+      // говорим что, если по какой-либо из них кликнули
+      mainOfferWrapper.forEach(function (card, index) {
+        card.addEventListener("click", function () {
+          modal.classList.add("active"); // открыть модальное окно
+          modalImg.src = `./image/tea-${index + 1}.png`; // вставить картинку в соответствии с выбранной карточкой
+          modalTitle.textContent = `${teaDrinks[index].name}`; // вставить наименование продукта
+          modalSubtitle.textContent = `${teaDrinks[index].description}`; // вставить описание продукта
+          modalSizeSmall.textContent = `${teaDrinks[index].sizes.s.size}`; // вставить размер маленького продукта
+          modalSizeMedium.textContent = `${teaDrinks[index].sizes.m.size}`; // вставить размер среднего продукта
+          modalSizeLarge.textContent = `${teaDrinks[index].sizes.l.size}`; // вставить размер большого продукта
+          modalAdditives1.textContent = `${teaDrinks[index].additives[0].name}`; // вставить название первой добавки
+          modalAdditives2.textContent = `${teaDrinks[index].additives[1].name}`; // вставить название второй добавки
+          modalAdditives3.textContent = `${teaDrinks[index].additives[2].name}`; // вставить название третьей добавки
+        });
+      });
+      // а по кнопке Close
+      modalCloseBtn.addEventListener("click", function () {
+        modal.classList.remove("active"); // закрыть модальное окно
+      });
     });
 
     // то же самое, только для второй кнопки dessert
@@ -227,6 +296,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
         i += 1;
       }
+
+      // находим новосозданный блок с карточкой
+      const mainOfferWrapper = document.querySelectorAll(".main-offer-wrapper");
+      // говорим что, если по какой-либо из них кликнули
+      mainOfferWrapper.forEach(function (card, index) {
+        card.addEventListener("click", function () {
+          modal.classList.add("active"); // открыть модальное окно
+          modalImg.src = `./image/dessert-${index + 1}.png`; // вставить картинку в соответствии с выбранной карточкой
+          modalTitle.textContent = `${dessert[index].name}`; // вставить наименование продукта
+          modalSubtitle.textContent = `${dessert[index].description}`; // вставить описание продукта
+          modalSizeSmall.textContent = `${dessert[index].sizes.s.size}`; // вставить размер маленького продукта
+          modalSizeMedium.textContent = `${dessert[index].sizes.m.size}`; // вставить размер среднего продукта
+          modalSizeLarge.textContent = `${dessert[index].sizes.l.size}`; // вставить размер большого продукта
+          modalAdditives1.textContent = `${dessert[index].additives[0].name}`; // вставить название первой добавки
+          modalAdditives2.textContent = `${dessert[index].additives[1].name}`; // вставить название второй добавки
+          modalAdditives3.textContent = `${dessert[index].additives[2].name}`; // вставить название третьей добавки
+        });
+      });
+      // а по кнопке Close
+      modalCloseBtn.addEventListener("click", function () {
+        modal.classList.remove("active"); // закрыть модальное окно
+      });
+    });
+
+    // при загрузке страницы кликнуть на кнопку раздела "кофе"
+    window.addEventListener("load", function () {
+      cardButtons[0].click();
     });
   }
   getProductsData(); // запускаем асинхронную функцию
