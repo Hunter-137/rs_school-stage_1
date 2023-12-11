@@ -1,5 +1,9 @@
 @import "./style.css";
 
+.header.active {
+  padding-bottom: 661px;
+}
+
 .header-menu-logo-link {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -200,6 +204,297 @@
   display: none;
 }
 
+/* ************************* Модальное окно **************************************************** */
+
+.modal {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(64, 63, 61, 0.8);
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  transform: scale(1.1);
+  opacity: 0;
+  transition-duration: 300ms;
+  z-index: 3;
+}
+
+.modal.active {
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+  transition-duration: 800ms;
+}
+
+.modal-content {
+  display: flex;
+  background-color: #e1d4c9;
+  max-width: 800px;
+  padding: 16px;
+  border-radius: 40px;
+}
+
+.modal-img__container {
+  width: 310px;
+  height: 310px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.modal-img__container-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-description {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+}
+
+.modal-description-title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 30px */
+  margin-bottom: 12px;
+}
+
+.modal-description-subtitle {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  margin-bottom: 20px;
+}
+
+.modal-description-size {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  margin-bottom: 8px;
+}
+
+.modal-description-size-btn__wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  margin-bottom: 20px;
+}
+
+.modal-description-size-btn {
+  background-color: transparent;
+  border: 1px solid #c1b6ad;
+  border-radius: 100px;
+  padding: 8px 16px 8px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition-duration: 1s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.modal-description-size-btn-symbol__container {
+  border-radius: 100px;
+  background-color: #c1b6ad;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 1s;
+}
+
+.modal-description-size-btn-symbol {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+}
+
+.modal-description-size-btn-text {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  transition-duration: 1s;
+}
+
+@media (hover: hover) {
+  .modal-description-size-btn:hover {
+    background-color: #665f55;
+  }
+  .modal-description-size-btn:hover
+    .modal-description-size-btn-symbol__container {
+    background-color: #e1d4c9;
+  }
+
+  .modal-description-size-btn:hover .modal-description-size-btn-text {
+    color: #e1d4c9;
+  }
+}
+
+.modal-description-size-btn.active {
+  background-color: #665f55;
+}
+
+.modal-description-size-btn.active
+  .modal-description-size-btn-symbol__container {
+  background-color: #e1d4c9;
+}
+
+.modal-description-size-btn.active .modal-description-size-btn-text {
+  color: #e1d4c9;
+}
+
+.modal-description-additives {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  margin-bottom: 8px;
+}
+
+.modal-description-additives-btn__wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  margin-bottom: 20px;
+}
+
+.modal-description-additives-btn {
+  background-color: transparent;
+  border: 1px solid #c1b6ad;
+  border-radius: 100px;
+  padding: 8px 16px 8px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition-duration: 1s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.modal-description-additives-btn-symbol__container {
+  border-radius: 100px;
+  background-color: #c1b6ad;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 1s;
+}
+
+.modal-description-additives-btn-symbol {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+}
+
+.modal-description-additives-btn-text {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  transition-duration: 1s;
+}
+
+@media (hover: hover) {
+  .modal-description-additives-btn:hover {
+    background-color: #665f55;
+  }
+  .modal-description-additives-btn:hover
+    .modal-description-additives-btn-symbol__container {
+    background-color: #e1d4c9;
+  }
+
+  .modal-description-additives-btn:hover .modal-description-additives-btn-text {
+    color: #e1d4c9;
+  }
+}
+
+.modal-description-additives-btn.active {
+  background-color: #665f55;
+}
+
+.modal-description-additives-btn.active
+  .modal-description-additives-btn-symbol__container {
+  background-color: #e1d4c9;
+}
+
+.modal-description-additives-btn.active .modal-description-additives-btn-text {
+  color: #e1d4c9;
+}
+
+.modal-description-total-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 30px */
+  margin-bottom: 20px;
+}
+
+.modal-description-alert-wrapper {
+  display: flex;
+  padding: 12px 0px;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  margin-bottom: 20px;
+  border-top: 1px solid #c1b6ad;
+}
+
+.modal-description-alert-text {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 14px */
+}
+
+.modal-description-close__btn {
+  padding: 10px 78px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  border-radius: 100px;
+  border: 1px solid #665f55;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition-duration: 1s;
+}
+
+@media (hover: hover) {
+  .modal-description-close__btn:hover {
+    background-color: #665f55;
+    color: #e1d4c9;
+  }
+}
+
 /* ************************* Адаптив пк/планшет **************************************************** */
 
 @media (max-width: 1439px) {
@@ -264,6 +559,10 @@
   .main-offer-refresh__btn {
     margin: 37px auto 0;
   }
+
+  .modal-content {
+    max-width: 656px;
+  }
 }
 
 /* ************************* Адаптив телефон **************************************************** */
@@ -273,6 +572,18 @@
     font-style: normal;
     font-weight: 600;
     line-height: 125%; /* 40px */
+  }
+
+  .modal-content {
+    max-width: 310px;
+  }
+
+  .modal-img__container {
+    display: none;
+  }
+
+  .modal-description {
+    padding-left: 0;
   }
 }
 
