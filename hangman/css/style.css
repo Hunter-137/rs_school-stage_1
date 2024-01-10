@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+}
+
+.header {
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.header__title {
+  text-align: center;
+}
+
+.header__subtitle {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.game-zone-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-zone__gallows_wrapper {
+  position: relative;
+}
+
+.gallows {
+  width: 200px;
+  height: 400px;
+}
+
+.human {
+  width: 50px;
+}
+
+.human__head {
+  position: absolute;
+  top: 118px;
+  left: 147px;
+  height: 50px;
+}
+
+.human__body {
+  position: absolute;
+  top: 166px;
+  left: 147px;
+  height: 70px;
+}
+
+.human__hand_one {
+  position: absolute;
+  top: 173px;
+  left: 131px;
+  height: 40px;
+}
+
+.human__hand_two {
+  position: absolute;
+  top: 173px;
+  left: 163px;
+  height: 40px;
+}
+
+.human__leg_one {
+  position: absolute;
+  top: 233px;
+  left: 131px;
+  height: 40px;
+}
+
+.human__leg_two {
+  position: absolute;
+  top: 233px;
+  left: 163px;
+  height: 40px;
+}
