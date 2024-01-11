@@ -1,3 +1,4 @@
+// **************************** вёрстка макета ****************************
 // находим наш body
 const body = document.querySelector("body");
 console.log(body);
@@ -148,24 +149,87 @@ conundrumWord.classList.add("conundrum-word");
 // вложили его в правую секцию
 gameZoneConundrum.appendChild(conundrumWord);
 
-// массив со спаном — в них должны быть буквы слова, потом поменяю
-const conundrumLetters = [
-  document.createElement("span"),
-  document.createElement("span"),
-  document.createElement("span"),
-  document.createElement("span"),
-  document.createElement("span"),
-  document.createElement("span"),
-  document.createElement("span"),
+// пустой массив для span
+// в него добавляются элементы в зависимости от количества букв в ответе слова
+let conundrumLetters = [];
+
+// массив с объектами — загадки и ответы
+const conundrumArray = [
+  {
+    id: 1,
+    conundrumAnswer: "Ветер",
+    conundrumQuestion: "Без рук и без ног, а двери открываются",
+  },
+
+  {
+    id: 2,
+    conundrumAnswer: "Тень",
+    conundrumQuestion:
+      "Смести не получится, вынести не выйдет, а стемнеет — само уйдет",
+  },
+
+  {
+    id: 3,
+    conundrumAnswer: "Груша",
+    conundrumQuestion: "Жёлтая лампочка висит, скушать нам её велит",
+  },
+
+  {
+    id: 4,
+    conundrumAnswer: "Ананас",
+    conundrumQuestion: "Жёлтый фрукт похожий на шишку ели",
+  },
+
+  {
+    id: 5,
+    conundrumAnswer: "Солнце",
+    conundrumQuestion: "Всходит и заходит, но с места не сходит",
+  },
+
+  {
+    id: 6,
+    conundrumAnswer: "Комета",
+    conundrumQuestion:
+      "Когда я падаю с неба меня, почему-то, называют падающей звездой, но на самом деле я...",
+  },
+
+  {
+    id: 7,
+    conundrumAnswer: "Я",
+    conundrumQuestion: "Кто самый лучший ревьювер?",
+  },
+
+  {
+    id: 8,
+    conundrumAnswer: "Цветы",
+    conundrumQuestion: "Дарят девушкам в нечётном количестве",
+  },
+
+  {
+    id: 9,
+    conundrumAnswer: "Носки",
+    conundrumQuestion: "Дарят парням в чётном количестве",
+  },
+
+  {
+    id: 10,
+    conundrumAnswer: "Да",
+    conundrumQuestion: "Приготовишь мне вкусняшки, если вдруг встретимся?",
+  },
 ];
 
-// цикл для добавления к каждому span нужный класс
-// и вкладываем каждый спан в наш блок со значением "__"
-for (let i = 0; i < conundrumLetters.length; i++) {
-  conundrumLetters[i].classList.add("conundrum-word__letter");
+// цикл: добавляет span в пустой массив столько раз, сколько букв в ответе на загадку
+// вкладывает каждую букву в нужный блок DOM элемента
+// добавляет к каждому span нужный класс
+// добавляет к каждому span текст "__"
+for (let i = 0; i < conundrumArray[0].conundrumAnswer.length; i++) {
+  conundrumLetters.push(document.createElement("span"));
   conundrumWord.appendChild(conundrumLetters[i]);
+  conundrumLetters[i].classList.add("conundrum-word__letter");
   conundrumLetters[i].textContent = "__";
 }
+
+console.log(conundrumLetters);
 
 // блок для вопроса
 const conundrumHint = document.createElement("h2");
@@ -175,10 +239,10 @@ conundrumHint.textContent = "Вопрос: ";
 // вложили в правую секцию
 gameZoneConundrum.appendChild(conundrumHint);
 
-// значение вопроса — потом поменяю его на конкретные вопросы
+// значение вопроса
 const conundrumHintContent = document.createElement("span");
 conundrumHintContent.classList.add("conundrum-hint__content");
-conundrumHintContent.textContent = "блаблабла, угу";
+conundrumHintContent.textContent = conundrumArray[5].conundrumQuestion;
 
 // вложил значение вопроса в блок для вопроса
 conundrumHint.appendChild(conundrumHintContent);
@@ -192,9 +256,10 @@ conundrumGuess.textContent = "Попытки: ";
 gameZoneConundrum.appendChild(conundrumGuess);
 
 // значение: сколько попыток осталось
+let countOfGuess = 0;
 const conundrumGuessCount = document.createElement("span");
 conundrumGuessCount.classList.add("conundrum-guess__count");
-conundrumGuessCount.textContent = "0 / 6";
+conundrumGuessCount.textContent = `${countOfGuess} / 6`;
 
 // вложил значение попыток в блок для попыток
 conundrumGuess.appendChild(conundrumGuessCount);
