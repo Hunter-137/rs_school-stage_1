@@ -62,6 +62,8 @@ body {
 
 .human {
   width: 50px;
+  opacity: 0;
+  transition-duration: 1s;
 }
 
 .human__head {
