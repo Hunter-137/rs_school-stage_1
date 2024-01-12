@@ -261,10 +261,44 @@ const conundrumGuessCount = document.createElement("span");
 conundrumGuessCount.classList.add("conundrum-guess__count");
 conundrumGuessCount.textContent = `${countOfGuess} / 6`;
 
+// коллекция всех элементов с классом human
+const humanAllSvgElements = document.querySelectorAll(".human");
+
+// отображение человечка по мере счётчика попыток
+// 0 — человечек не отображен, 6 — человечек показан полностью
+if (countOfGuess === 0) {
+  for (const element of humanAllSvgElements) {
+    element.style.opacity = "0";
+  }
+} else if (countOfGuess === 1) {
+  humanHeadSvg.style.opacity = "1";
+} else if (countOfGuess === 2) {
+  humanHeadSvg.style.opacity = "1";
+  humanBodySvg.style.opacity = "1";
+} else if (countOfGuess === 3) {
+  humanHeadSvg.style.opacity = "1";
+  humanBodySvg.style.opacity = "1";
+  humanHandOneSvg.style.opacity = "1";
+} else if (countOfGuess === 4) {
+  humanHeadSvg.style.opacity = "1";
+  humanBodySvg.style.opacity = "1";
+  humanHandOneSvg.style.opacity = "1";
+  humanHandTwoSvg.style.opacity = "1";
+} else if (countOfGuess === 5) {
+  humanHeadSvg.style.opacity = "1";
+  humanBodySvg.style.opacity = "1";
+  humanHandOneSvg.style.opacity = "1";
+  humanHandTwoSvg.style.opacity = "1";
+  humanLegOneSvg.style.opacity = "1";
+} else if (countOfGuess === 6) {
+  for (const element of humanAllSvgElements) {
+    element.style.opacity = "1";
+  }
+}
 // вложил значение попыток в блок для попыток
 conundrumGuess.appendChild(conundrumGuessCount);
 
-// русский алфавит
+// русский алфавит для виртуальной клавиатуры
 const alphabetRussian = [
   "А",
   "Б",
