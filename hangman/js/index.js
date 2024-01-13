@@ -190,7 +190,7 @@ const conundrumArray = [
     id: 6,
     conundrumAnswer: "Комета",
     conundrumQuestion:
-      "Когда я падаю с неба меня, почему-то, называют падающей звездой, но на самом деле я...",
+      "Когда она падает с неба, её, почему-то, называют падающей звездой, но на самом деле она...",
   },
 
   {
@@ -218,11 +218,18 @@ const conundrumArray = [
   },
 ];
 
+// переменная для случайного выбора загадки
+let randomIdOfConundrum = Math.floor(Math.random() * 10);
+
 // цикл: добавляет span в пустой массив столько раз, сколько букв в ответе на загадку
 // вкладывает каждую букву в нужный блок DOM элемента
 // добавляет к каждому span нужный класс
 // добавляет к каждому span текст "__"
-for (let i = 0; i < conundrumArray[0].conundrumAnswer.length; i++) {
+for (
+  let i = 0;
+  i < conundrumArray[randomIdOfConundrum].conundrumAnswer.length;
+  i++
+) {
   conundrumLetters.push(document.createElement("span"));
   conundrumWord.appendChild(conundrumLetters[i]);
   conundrumLetters[i].classList.add("conundrum-word__letter");
@@ -242,7 +249,8 @@ gameZoneConundrum.appendChild(conundrumHint);
 // значение вопроса
 const conundrumHintContent = document.createElement("span");
 conundrumHintContent.classList.add("conundrum-hint__content");
-conundrumHintContent.textContent = conundrumArray[5].conundrumQuestion;
+conundrumHintContent.textContent =
+  conundrumArray[randomIdOfConundrum].conundrumQuestion;
 
 // вложил значение вопроса в блок для вопроса
 conundrumHint.appendChild(conundrumHintContent);
@@ -261,40 +269,50 @@ const conundrumGuessCount = document.createElement("span");
 conundrumGuessCount.classList.add("conundrum-guess__count");
 conundrumGuessCount.textContent = `${countOfGuess} / 6`;
 
+// функция для обновления счётчика попыток
+const countOfGuessUpdate = () => {
+  countOfGuess += 1;
+  conundrumGuessCount.textContent = `${countOfGuess} / 6`;
+};
+
 // коллекция всех элементов с классом human
 const humanAllSvgElements = document.querySelectorAll(".human");
 
 // отображение человечка по мере счётчика попыток
 // 0 — человечек не отображен, 6 — человечек показан полностью
-if (countOfGuess === 0) {
-  for (const element of humanAllSvgElements) {
-    element.style.opacity = "0";
+// закидываем всё в функцию
+const humanSvgUpdate = () => {
+  if (countOfGuess === 0) {
+    for (const element of humanAllSvgElements) {
+      element.style.opacity = "0";
+    }
+  } else if (countOfGuess === 1) {
+    humanHeadSvg.style.opacity = "1";
+  } else if (countOfGuess === 2) {
+    humanHeadSvg.style.opacity = "1";
+    humanBodySvg.style.opacity = "1";
+  } else if (countOfGuess === 3) {
+    humanHeadSvg.style.opacity = "1";
+    humanBodySvg.style.opacity = "1";
+    humanHandOneSvg.style.opacity = "1";
+  } else if (countOfGuess === 4) {
+    humanHeadSvg.style.opacity = "1";
+    humanBodySvg.style.opacity = "1";
+    humanHandOneSvg.style.opacity = "1";
+    humanHandTwoSvg.style.opacity = "1";
+  } else if (countOfGuess === 5) {
+    humanHeadSvg.style.opacity = "1";
+    humanBodySvg.style.opacity = "1";
+    humanHandOneSvg.style.opacity = "1";
+    humanHandTwoSvg.style.opacity = "1";
+    humanLegOneSvg.style.opacity = "1";
+  } else if (countOfGuess === 6) {
+    for (const element of humanAllSvgElements) {
+      element.style.opacity = "1";
+    }
   }
-} else if (countOfGuess === 1) {
-  humanHeadSvg.style.opacity = "1";
-} else if (countOfGuess === 2) {
-  humanHeadSvg.style.opacity = "1";
-  humanBodySvg.style.opacity = "1";
-} else if (countOfGuess === 3) {
-  humanHeadSvg.style.opacity = "1";
-  humanBodySvg.style.opacity = "1";
-  humanHandOneSvg.style.opacity = "1";
-} else if (countOfGuess === 4) {
-  humanHeadSvg.style.opacity = "1";
-  humanBodySvg.style.opacity = "1";
-  humanHandOneSvg.style.opacity = "1";
-  humanHandTwoSvg.style.opacity = "1";
-} else if (countOfGuess === 5) {
-  humanHeadSvg.style.opacity = "1";
-  humanBodySvg.style.opacity = "1";
-  humanHandOneSvg.style.opacity = "1";
-  humanHandTwoSvg.style.opacity = "1";
-  humanLegOneSvg.style.opacity = "1";
-} else if (countOfGuess === 6) {
-  for (const element of humanAllSvgElements) {
-    element.style.opacity = "1";
-  }
-}
+};
+
 // вложил значение попыток в блок для попыток
 conundrumGuess.appendChild(conundrumGuessCount);
 
@@ -350,6 +368,54 @@ for (let i = 0; i < alphabetRussian.length; i++) {
   conundrumKeyboardContainer.classList.add("conundrum-keyboard__container");
   conundrumKeyboardContainer.textContent = alphabetRussian[i];
   conundrumKeyboard.appendChild(conundrumKeyboardContainer);
+}
+
+// находим все кнопки на виртуальной клавиатуре
+const conundrumKeyboardButtons = document.querySelectorAll(
+  ".conundrum-keyboard__container"
+);
+
+// делаем все буквы ответа на загадку заглавными
+// так как регистр важен (вроде бы)
+const conundrumAnswerUpperCase =
+  conundrumArray[randomIdOfConundrum].conundrumAnswer.toUpperCase();
+
+// разбиваем на буквы ответ на загадку на массив по элементам
+const lettersOfAnswer = conundrumAnswerUpperCase.split("");
+
+console.log(lettersOfAnswer);
+
+// перебираем каждую кнопку и по клику на любую из них
+// вытаскиваем содержимое кликнутой кнопки
+for (const button of conundrumKeyboardButtons) {
+  button.addEventListener("click", function (event) {
+    const blockOfKeyboard = event.target;
+    const letterOfKeyboard = blockOfKeyboard.textContent;
+
+    // после того как вытащили содержимое кнопки — букву
+    // проверяем: есть ли эта буква в ответе на загадку?
+    // если да — запускаем цикл проверки каждого элемента
+    if (lettersOfAnswer.includes(letterOfKeyboard)) {
+      for (
+        let i = 0;
+        i < conundrumArray[randomIdOfConundrum].conundrumAnswer.length;
+        i++
+      ) {
+        // если первый элемент равен букве с виртуальной клавиатуры
+        if (lettersOfAnswer[i] === letterOfKeyboard) {
+          // то именно этим элементом заменяем текст у первого span
+          conundrumLetters[i].textContent = lettersOfAnswer[i];
+          // добавляем класс disabled (pointer-events: none;)
+          blockOfKeyboard.classList.add("_disabled");
+        }
+      }
+      // если выбранной буквы нет в ответе на загадку
+    } else {
+      blockOfKeyboard.classList.add("_disabled"); // также добавляем класс
+      countOfGuessUpdate(); // обновляем количество попыток
+      humanSvgUpdate(); // обновляем отображение человечка
+    }
+  });
 }
 
 // создаем футер
