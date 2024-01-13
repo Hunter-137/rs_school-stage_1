@@ -1,4 +1,3 @@
-// **************************** вёрстка макета ****************************
 // находим наш body
 const body = document.querySelector("body");
 console.log(body);
@@ -236,8 +235,6 @@ for (
   conundrumLetters[i].textContent = "__";
 }
 
-console.log(conundrumLetters);
-
 // блок для вопроса
 const conundrumHint = document.createElement("h2");
 conundrumHint.classList.add("conundrum-hint");
@@ -383,7 +380,30 @@ const conundrumAnswerUpperCase =
 // разбиваем на буквы ответ на загадку на массив по элементам
 const lettersOfAnswer = conundrumAnswerUpperCase.split("");
 
+// ответ на загадку (также служил для отладки)
 console.log(lettersOfAnswer);
+
+// функция по проверке игры: победил/проиграл
+// считает количество совпадений отгаданных букв с количеством букв в ответе
+// если кол-во совпадений равно кол-ву букв в ответе — победа — останавливаем цикл
+// если кол-во попыток станет равно 6 — поражение
+const checkGameOver = () => {
+  let correctLetterMatches = 0;
+  for (let i = 0; i < conundrumLetters.length; i++) {
+    if (conundrumLetters[i].textContent === lettersOfAnswer[i]) {
+      correctLetterMatches += 1;
+    }
+
+    if (correctLetterMatches === conundrumLetters.length) {
+      console.log("you win!");
+      break;
+    }
+  }
+
+  if (countOfGuess === 6) {
+    console.log("you lose!");
+  }
+};
 
 // перебираем каждую кнопку и по клику на любую из них
 // вытаскиваем содержимое кликнутой кнопки
@@ -407,12 +427,14 @@ for (const button of conundrumKeyboardButtons) {
           conundrumLetters[i].textContent = lettersOfAnswer[i];
           // добавляем класс disabled (pointer-events: none;)
           blockOfKeyboard.classList.add("_disabled");
+          checkGameOver();
         }
       }
       // если выбранной буквы нет в ответе на загадку
     } else {
       blockOfKeyboard.classList.add("_disabled"); // также добавляем класс
       countOfGuessUpdate(); // обновляем количество попыток
+      checkGameOver(); // проверка победил/проиграл
       humanSvgUpdate(); // обновляем отображение человечка
     }
   });
