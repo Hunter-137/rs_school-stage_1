@@ -53,6 +53,7 @@ body {
 
 .game-zone__gallows_wrapper {
   position: relative;
+  z-index: 0;
 }
 
 .gallows {
@@ -163,5 +164,69 @@ body {
 @media (max-width: 660px) {
   .game-zone-wrapper {
     flex-direction: column;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  transform: scale(0);
+  transition-duration: 1s;
+  background-color: #f0f8ffb4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modal._active {
+  visibility: visible;
+  transform: scale(1);
+}
+
+.modal__content {
+  background: radial-gradient(
+    circle,
+    rgba(70, 252, 143, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10%;
+}
+
+.modal__content__new-game {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-top: 1px solid rgb(26, 179, 179);
+  border-bottom: 1px solid rgb(26, 179, 179);
+  border-radius: 0 0 15% 15%;
+  padding: 10px;
+  cursor: pointer;
+  transition-duration: 500ms;
+  -webkit-tap-highlight-color: transparent;
+  outline-color: rgb(26, 179, 179);
+}
+
+@media (hover: hover) {
+  .modal__content__new-game:hover {
+    border: 1px solid rgb(26, 179, 179);
+    background-color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal__content__new-game {
+    border: 1px solid rgb(26, 179, 179);
+    background-color: rgba(255, 255, 255, 0.65);
   }
 }
