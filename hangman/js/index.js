@@ -218,7 +218,30 @@ const conundrumArray = [
 ];
 
 // переменная для случайного выбора загадки
-let randomIdOfConundrum = Math.floor(Math.random() * 10);
+// используется пустой массив для запоминания последней выпавшей цифры
+let alreadyDrawnDigits = [];
+let randomIdOfConundrum;
+
+// функция по созданию случайного выбора загадки
+// созданная цифра закидывается в пустой массив
+// при новой итерации в while прописано, что если данная цифра уже есть в массиве
+// то создать новую случайную цифру снова, иначе продолжить функцию
+// но если массив заполнится до 10 элементов — очистить его чтобы начать круг заново
+const getRandomIdOfConundrum = () => {
+  do {
+    randomIdOfConundrum = Math.floor(Math.random() * 10);
+  } while (alreadyDrawnDigits.includes(randomIdOfConundrum));
+
+  alreadyDrawnDigits.push(randomIdOfConundrum);
+  if (alreadyDrawnDigits.length === 10) {
+    alreadyDrawnDigits = [];
+  }
+
+  return randomIdOfConundrum;
+};
+
+getRandomIdOfConundrum();
+console.log(alreadyDrawnDigits.length);
 
 // цикл: добавляет span в пустой массив столько раз, сколько букв в ответе на загадку
 // вкладывает каждую букву в нужный блок DOM элемента
@@ -367,6 +390,65 @@ for (let i = 0; i < alphabetRussian.length; i++) {
   conundrumKeyboard.appendChild(conundrumKeyboardContainer);
 }
 
+// создаем футер
+const footer = document.createElement("footer");
+footer.classList.add("footer");
+
+// помещаем футер в общий контейнер
+container.appendChild(footer);
+
+// добавляем текст
+const footerText = document.createElement("p");
+footerText.classList.add("footer-text");
+footerText.textContent = "Приятного времяпровождения, друг!";
+
+// вкладываем текст в футер
+footer.appendChild(footerText);
+
+// модальное окно — обёртка
+const modalWrapper = document.createElement("div");
+modalWrapper.classList.add("modal");
+body.appendChild(modalWrapper);
+
+// контентная часть модального окна
+const modalContentBlock = document.createElement("div");
+modalContentBlock.classList.add("modal__content");
+modalWrapper.appendChild(modalContentBlock);
+
+// текст победа/поражение
+const modalContentTitle = document.createElement("p");
+modalContentTitle.classList.add("modal__content__text");
+modalContentTitle.textContent = "Победа!";
+modalContentBlock.appendChild(modalContentTitle);
+
+// текст блок для секретного слова
+const modalContentSubtitle = document.createElement("p");
+modalContentSubtitle.classList.add("modal__content__text");
+modalContentSubtitle.textContent = "Секретное слово: ";
+modalContentBlock.appendChild(modalContentSubtitle);
+
+// секретное слово
+let secretWord =
+  conundrumArray[randomIdOfConundrum].conundrumAnswer.toUpperCase();
+
+const secretWordUpdate = () => {
+  secretWord =
+    conundrumArray[randomIdOfConundrum].conundrumAnswer.toUpperCase();
+  modalContentSecretWord.textContent = `${secretWord}`;
+};
+
+// span секретного слова внутри блока
+const modalContentSecretWord = document.createElement("span");
+modalContentSecretWord.classList.add("modal__content__text");
+modalContentSecretWord.textContent = `${secretWord}`;
+modalContentBlock.appendChild(modalContentSecretWord);
+
+// кнопка старта новой игры
+const modalContentNewGame = document.createElement("div");
+modalContentNewGame.classList.add("modal__content__new-game");
+modalContentNewGame.textContent = "Играть снова";
+modalContentBlock.appendChild(modalContentNewGame);
+
 // находим все кнопки на виртуальной клавиатуре
 const conundrumKeyboardButtons = document.querySelectorAll(
   ".conundrum-keyboard__container"
@@ -374,19 +456,20 @@ const conundrumKeyboardButtons = document.querySelectorAll(
 
 // делаем все буквы ответа на загадку заглавными
 // так как регистр важен (вроде бы)
-const conundrumAnswerUpperCase =
+let conundrumAnswerUpperCase =
   conundrumArray[randomIdOfConundrum].conundrumAnswer.toUpperCase();
 
 // разбиваем на буквы ответ на загадку на массив по элементам
-const lettersOfAnswer = conundrumAnswerUpperCase.split("");
+let lettersOfAnswer = conundrumAnswerUpperCase.split("");
 
 // ответ на загадку (также служил для отладки)
 console.log(lettersOfAnswer);
 
 // функция по проверке игры: победил/проиграл
 // считает количество совпадений отгаданных букв с количеством букв в ответе
-// если кол-во совпадений равно кол-ву букв в ответе — победа — останавливаем цикл
+// если кол-во совпадений равно кол-ву букв в ответе — победа
 // если кол-во попыток станет равно 6 — поражение
+// при любом исходе запускаем модальное окно
 const checkGameOver = () => {
   let correctLetterMatches = 0;
   for (let i = 0; i < conundrumLetters.length; i++) {
@@ -395,13 +478,17 @@ const checkGameOver = () => {
     }
 
     if (correctLetterMatches === conundrumLetters.length) {
-      console.log("you win!");
+      modalWrapper.classList.add("_active");
+      modalContentTitle.textContent = "Победа!";
+      secretWordUpdate();
       break;
     }
   }
 
   if (countOfGuess === 6) {
-    console.log("you lose!");
+    modalWrapper.classList.add("_active");
+    modalContentTitle.textContent = "Поражение!";
+    secretWordUpdate();
   }
 };
 
@@ -440,17 +527,100 @@ for (const button of conundrumKeyboardButtons) {
   });
 }
 
-// создаем футер
-const footer = document.createElement("footer");
-footer.classList.add("footer");
+// поддержка физической клавиатуры
+// сначала сравнивается кнопка с массивом допустимых букв
+// если всё круто — код схож с поддержкой виртуальной клавиатуры
+// в противном случае выводится в консоль просьба о смене раскладки
 
-// помещаем футер в общий контейнер
-container.appendChild(footer);
+document.addEventListener("keyup", function (event) {
+  const bigLetter = event.key.toUpperCase(); // перевод полученной буквы в заглавную
+  if (alphabetRussian.includes(bigLetter)) {
+    if (lettersOfAnswer.includes(bigLetter)) {
+      for (
+        let i = 0;
+        i < conundrumArray[randomIdOfConundrum].conundrumAnswer.length;
+        i++
+      ) {
+        // если первый элемент равен букве с физической клавиатуры
+        if (lettersOfAnswer[i] === bigLetter) {
+          // то именно этим элементом заменяем текст у первого span
+          conundrumLetters[i].textContent = lettersOfAnswer[i];
+          // теперь перебираем виртуальную клавиатуру
+          for (const blockOfKeyboard of conundrumKeyboardButtons) {
+            // если буква физической совпадает с виртуальной клавиатурой
+            // добавляем класс disabled (pointer-events: none;)
+            if (blockOfKeyboard.textContent === bigLetter) {
+              blockOfKeyboard.classList.add("_disabled");
+            }
+          }
+        }
+        checkGameOver(); // проверка игры: когда там победа?
+      }
+      // если буква с физической клавиатуры не сходится с буквой в ответе на загадку
+    } else {
+      for (const blockOfKeyboard of conundrumKeyboardButtons) {
+        // если буква физической совпадает с виртуальной клавиатурой
+        // добавляем класс disabled (pointer-events: none;)
+        if (blockOfKeyboard.textContent === bigLetter) {
+          blockOfKeyboard.classList.add("_disabled");
+        }
+      }
+      // после if проверок
+      countOfGuessUpdate(); // обновляем счётчик
+      humanSvgUpdate(); // обновляем svg элементы
+      checkGameOver(); // снова проверяем когда там конец игры
+    }
+    // если нажатая клавиша не совпадает с массивом алфавита
+  } else {
+    console.log(
+      "huh?\nИспользуйте русскую раскладку, пожалуйста, только буквы"
+    );
+  }
+});
 
-// добавляем текст
-const footerText = document.createElement("p");
-footerText.classList.add("footer-text");
-footerText.textContent = "Приятного времяпровождения, друг!";
+// функция по старту новой игры
+const startNewGame = () => {
+  modalWrapper.classList.remove("_active");
+  getRandomIdOfConundrum();
+  countOfGuess = -1; // так как countOfGuessUpdate(); имеет +1 сразу, я вывожу -1 для нуля
+  countOfGuessUpdate();
+  humanSvgUpdate();
 
-// вкладываем текст в футер
-footer.appendChild(footerText);
+  conundrumKeyboardButtons.forEach((button) => {
+    button.classList.remove("_disabled");
+  });
+
+  conundrumHintContent.textContent =
+    conundrumArray[randomIdOfConundrum].conundrumQuestion;
+
+  // цикл повторяется, пока у блока conundrumWord есть хотя бы один дочерний элемент
+  // далее — цикл удаляет первый дочерний элемент
+  // делается для того, чтобы перезаписать слово по новой
+  while (conundrumWord.firstChild) {
+    conundrumWord.removeChild(conundrumWord.firstChild);
+  }
+
+  conundrumLetters = [];
+  // в снова пустой массив без всех элементов span
+  // перезаписываем слово скрывая нижним прочерком
+  for (
+    let i = 0;
+    i < conundrumArray[randomIdOfConundrum].conundrumAnswer.length;
+    i++
+  ) {
+    conundrumLetters.push(document.createElement("span"));
+    conundrumWord.appendChild(conundrumLetters[i]);
+    conundrumLetters[i].classList.add("conundrum-word__letter");
+    conundrumLetters[i].textContent = "__";
+  }
+  conundrumAnswerUpperCase =
+    conundrumArray[randomIdOfConundrum].conundrumAnswer.toUpperCase();
+
+  lettersOfAnswer = [];
+  lettersOfAnswer = conundrumAnswerUpperCase.split("");
+
+  console.log(lettersOfAnswer);
+};
+
+// на кнопку в модальном окне рестарт игры
+modalContentNewGame.addEventListener("click", startNewGame);
