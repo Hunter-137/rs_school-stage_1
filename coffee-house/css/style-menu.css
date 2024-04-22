@@ -1,0 +1,598 @@
+@import "./style.css";
+
+.header.active {
+  padding-bottom: 661px;
+}
+
+.header-menu-logo-link {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.header-menu-btn-item {
+  cursor: default;
+}
+
+.header-menu-btn-item-text {
+  cursor: default;
+}
+
+.header-menu-btn-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 2px;
+  background-color: #403f3d;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+  opacity: 1;
+  cursor: default;
+}
+
+.main-menu {
+  margin-top: 16px;
+}
+
+.main-menu-title {
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 75px */
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.main-menu-btn-wrapper {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.main-menu-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 8px 8px;
+  border: 1px solid #c1b6ad;
+  background-color: transparent;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  transition-duration: 1s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.main-menu-btn-item > rect {
+  transition-duration: 1s;
+  fill: #c1b6ad;
+}
+
+.main-menu-btn-item-text {
+  color: #403f3d;
+  transition-duration: 1s;
+}
+
+.main-menu-btn:hover {
+  background-color: #665f55;
+}
+
+.main-menu-btn:hover .main-menu-btn-item-text {
+  color: #e1d4c9;
+}
+
+.main-menu-btn:hover rect {
+  fill: #e1d4c9;
+}
+
+.main-menu-btn.active {
+  background-color: #665f55;
+  transition-duration: 1s;
+  cursor: default;
+}
+
+.main-menu-btn-item.active rect {
+  fill: #e1d4c9;
+  transition-duration: 1s;
+}
+
+.main-menu-btn-item-text.active {
+  color: #e1d4c9;
+  transition-duration: 1s;
+}
+
+.main-offer {
+  display: flex;
+  width: 1370px;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 37px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.main-offer-wrapper {
+  border: 1px solid #c1b6ad;
+  border-radius: 40px;
+  height: 506px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.main-offer-content {
+  width: 310px;
+  height: 310px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.main-offer-content-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  transition-duration: 1s;
+}
+
+.main-offer-wrapper:hover .main-offer-content-item {
+  transform: scale(1);
+}
+
+.main-offer-description {
+  padding: 20px;
+  max-width: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow: 1;
+  align-self: stretch;
+}
+
+.main-offer-description-wrapper > h2 {
+  margin-bottom: 12px;
+}
+
+.main-offer-description-title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 30px */
+  color: #403f3d;
+}
+
+.main-offer-description-text {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  color: #403f3d;
+}
+
+.main-offer-description-price {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 30px */
+  color: #403f3d;
+  margin-top: 12px;
+}
+
+.main-offer-refresh__btn {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #665f55;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  display: none;
+}
+
+/* ************************* Модальное окно **************************************************** */
+
+.modal {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(64, 63, 61, 0.8);
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  transform: scale(1.1);
+  opacity: 0;
+  transition-duration: 300ms;
+  z-index: 3;
+}
+
+.modal.active {
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+  transition-duration: 800ms;
+}
+
+.modal-content {
+  display: flex;
+  background-color: #e1d4c9;
+  max-width: 800px;
+  padding: 16px;
+  border-radius: 40px;
+}
+
+.modal-img__container {
+  width: 310px;
+  height: 310px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.modal-img__container-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-description {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+}
+
+.modal-description-title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 30px */
+  margin-bottom: 12px;
+}
+
+.modal-description-subtitle {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  margin-bottom: 20px;
+}
+
+.modal-description-size {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  margin-bottom: 8px;
+}
+
+.modal-description-size-btn__wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  margin-bottom: 20px;
+}
+
+.modal-description-size-btn {
+  background-color: transparent;
+  border: 1px solid #c1b6ad;
+  border-radius: 100px;
+  padding: 8px 16px 8px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition-duration: 1s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.modal-description-size-btn-symbol__container {
+  border-radius: 100px;
+  background-color: #c1b6ad;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 1s;
+}
+
+.modal-description-size-btn-symbol {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+}
+
+.modal-description-size-btn-text {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  transition-duration: 1s;
+}
+
+@media (hover: hover) {
+  .modal-description-size-btn:hover {
+    background-color: #665f55;
+  }
+  .modal-description-size-btn:hover
+    .modal-description-size-btn-symbol__container {
+    background-color: #e1d4c9;
+  }
+
+  .modal-description-size-btn:hover .modal-description-size-btn-text {
+    color: #e1d4c9;
+  }
+}
+
+.modal-description-size-btn.active {
+  background-color: #665f55;
+}
+
+.modal-description-size-btn.active
+  .modal-description-size-btn-symbol__container {
+  background-color: #e1d4c9;
+}
+
+.modal-description-size-btn.active .modal-description-size-btn-text {
+  color: #e1d4c9;
+}
+
+.modal-description-additives {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  margin-bottom: 8px;
+}
+
+.modal-description-additives-btn__wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  margin-bottom: 20px;
+}
+
+.modal-description-additives-btn {
+  background-color: transparent;
+  border: 1px solid #c1b6ad;
+  border-radius: 100px;
+  padding: 8px 16px 8px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition-duration: 1s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.modal-description-additives-btn-symbol__container {
+  border-radius: 100px;
+  background-color: #c1b6ad;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 1s;
+}
+
+.modal-description-additives-btn-symbol {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+}
+
+.modal-description-additives-btn-text {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  transition-duration: 1s;
+}
+
+@media (hover: hover) {
+  .modal-description-additives-btn:hover {
+    background-color: #665f55;
+  }
+  .modal-description-additives-btn:hover
+    .modal-description-additives-btn-symbol__container {
+    background-color: #e1d4c9;
+  }
+
+  .modal-description-additives-btn:hover .modal-description-additives-btn-text {
+    color: #e1d4c9;
+  }
+}
+
+.modal-description-additives-btn.active {
+  background-color: #665f55;
+}
+
+.modal-description-additives-btn.active
+  .modal-description-additives-btn-symbol__container {
+  background-color: #e1d4c9;
+}
+
+.modal-description-additives-btn.active .modal-description-additives-btn-text {
+  color: #e1d4c9;
+}
+
+.modal-description-total-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 30px */
+  margin-bottom: 20px;
+}
+
+.modal-description-alert-wrapper {
+  display: flex;
+  padding: 12px 0px;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  margin-bottom: 20px;
+  border-top: 1px solid #c1b6ad;
+}
+
+.modal-description-alert-text {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 14px */
+}
+
+.modal-description-close__btn {
+  padding: 10px 78px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  border-radius: 100px;
+  border: 1px solid #665f55;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition-duration: 1s;
+}
+
+@media (hover: hover) {
+  .modal-description-close__btn:hover {
+    background-color: #665f55;
+    color: #e1d4c9;
+  }
+}
+
+/* ************************* Адаптив пк/планшет **************************************************** */
+
+@media (max-width: 1439px) {
+  .main-offer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-menu-btn:hover {
+    background-color: transparent;
+  }
+
+  .main-menu-btn:hover .main-menu-btn-item-text {
+    color: #403f3d;
+  }
+
+  .main-menu-btn:hover rect {
+    fill: #c1b6ad;
+  }
+
+  .main-menu-btn.active {
+    background-color: #665f55;
+    transition-duration: 1s;
+    cursor: default;
+  }
+
+  .main-menu-btn-item.active rect {
+    fill: #e1d4c9;
+    transition-duration: 1s;
+  }
+
+  .main-menu-btn.active:hover .main-menu-btn-item-text.active {
+    color: #e1d4c9;
+  }
+
+  .main-offer-wrapper._5 {
+    display: none;
+  }
+
+  .main-offer-wrapper._6 {
+    display: none;
+  }
+
+  .main-offer-wrapper._7 {
+    display: none;
+  }
+
+  .main-offer-wrapper._8 {
+    display: none;
+  }
+
+  .main-offer-content-item {
+    transform: scale(1);
+  }
+
+  .main-offer-refresh__btn {
+    display: block;
+    margin: 40px auto 0;
+  }
+
+  .main-offer-refresh__btn {
+    margin: 37px auto 0;
+  }
+
+  .modal-content {
+    max-width: 656px;
+  }
+}
+
+/* ************************* Адаптив телефон **************************************************** */
+@media (max-width: 715px) {
+  .main-menu-title {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 40px */
+  }
+
+  .modal-content {
+    max-width: 310px;
+  }
+
+  .modal-img__container {
+    display: none;
+  }
+
+  .modal-description {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .main-menu-btn-wrapper {
+    gap: 5px;
+  }
+
+  .main-offer-refresh__btn {
+    margin: 34px auto 0;
+  }
+}

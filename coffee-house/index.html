@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee House</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./icon/favicon.ico" type="image/x-icon">
+    <script src="./js/index.js" defer></script>
+</head>
+<body>
+    <div class="container">
+
+        <header class="header">
+            <div class="header-menu-wrapper">
+                <div class="header-menu-logo">
+                    <img src="./icon/logo.svg" alt="logo">
+                </div>
+                <!-- класс active в nav добавит плашку, css готов -->
+                <nav class="header-menu-nav">
+                    <ul class="header-menu-nav-list">
+                        <li class="header-menu-nav-list-item">
+                            <a href="#favorite__coffee">Favorite coffee</a>
+                        </li>
+                        <li class="header-menu-nav-list-item">
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="header-menu-nav-list-item">
+                            <a href="#mobile__app">Mobile app</a>
+                        </li>
+                        <li class="header-menu-nav-list-item">
+                            <a href="#contact__us">Contact us</a>
+                        </li>
+                        <li class="header-menu-nav-list-item">
+                            <div class="nav-burger__btn-wrapper">
+                                <a class="header-menu-btn-item-text nav-burger__btn" href="./menu.html">Menu</a>
+                                <svg class="nav-burger__btn-item" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40"
+                                    fill="none">
+                                    <path
+                                        d="M28.8333 18.9333V25C28.8333 30.5228 24.3561 35 18.8332 35H15.4999C9.97707 35 5.49992 30.5228 5.49992 25V18.9333C5.49992 18.602 5.76855 18.3333 6.09992 18.3333H28.2333C28.5646 18.3333 28.8333 18.602 28.8333 18.9333Z"
+                                        stroke="#403F3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M20.4999 15C20.4999 13.3334 21.6904 11.6667 24.0713 11.6667C24.5919 11.6667 25.2136 11.6667 25.8333 11.6667C27.4901 11.6667 28.8333 10.3236 28.8333 8.66671V5.83337"
+                                        stroke="#403F3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M13.8334 15V12.1667C13.8334 10.5098 15.1766 9.16667 16.8334 9.16667H20.1667C21.2713 9.16667 22.1667 8.27124 22.1667 7.16667V5"
+                                        stroke="#403F3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M27.1667 18.3334H31.3334C33.6346 18.3334 35.5001 20.1989 35.5001 22.5C35.5001 24.8012 33.6346 26.6667 31.3334 26.6667H28.8334"
+                                        stroke="#403F3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-menu-btn-item">
+                    <a class="header-menu-btn-item-text" href="./menu.html">Menu</a>
+                </div>
+                <div class="header-menu-burger-btn"></div>
+            </div>
+            <div class="header-content">
+                <video class="header-content-item" autoplay muted loop>
+                    <source src="./video/header_video_(2160p).mp4" type="video/mp4">
+                </video>
+                <section class="header-content-title-wrapper">
+                    <h1 class="header-content-title">
+                        <span class="accent__text">Enjoy</span> premium coffee at our charming cafe
+                    </h1>
+                    <p class="header-content-text">
+                        With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.
+                    </p>
+                    <a class="header-content-btn-link" href="./menu.html">
+                        <div class="header-content-btn">
+                            <span class="header-content-btn-text">Menu</span>
+                            <img class="header-content-btn-icon" src="./icon/coffee-cup.svg" alt="coffee-cup">
+                        </div>
+                    </a>
+                </section>
+            </div>
+        </header>
+        <main class="main">
+
+            <section class="main-favorite__coffee">
+                <h2 id="favorite__coffee" class="main-favorite__coffee-title">
+                    Choose your <span class="accent__text">favorite</span> coffee
+                </h2>
+                <div class="main-favorite__coffee-carousel-wrapper">
+                    <button class="main-favorite__coffee-carousel-btn carousel-btn__left">
+                        <img class="main-favorite__coffee-carousel-btn-item" src="./icon/arrow-left.svg" alt="arrow-left">
+                    </button>
+                    <button class="main-favorite__coffee-carousel-btn carousel-btn__right">
+                        <img class="main-favorite__coffee-carousel-btn-item" src="./icon/arrow-right.svg" alt="arrow-right">
+                    </button>
+                    <div class="main-favorite__coffee-carousel">
+                        <div class="main-favorite__coffee-carousel-slide _1">
+                            <img class="main-favorite__coffee-carousel-item" src="./image/coffee-slider-1.png" alt="S’mores Frappuccino">
+                            <h3 class="main-favorite__coffee-carousel-title">S’mores Frappuccino</h3>
+                            <p class="main-favorite__coffee-carousel-subtitle">This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</p>
+                            <p class="main-favorite__coffee-carousel-price">$5.50</p>
+                        </div>
+                        <div class="main-favorite__coffee-carousel-slide _2">
+                            <img class="main-favorite__coffee-carousel-item" src="./image/coffee-slider-2.png" alt="Caramel Macchiato">
+                            <h3 class="main-favorite__coffee-carousel-title">Caramel Macchiato</h3>
+                            <p class="main-favorite__coffee-carousel-subtitle">Fragrant and unique classic espresso with rich caramel-peanut syrup, with cream under whipped thick foam.</p>
+                            <p class="main-favorite__coffee-carousel-price">$5.00</p>
+                        </div>
+                        <div class="main-favorite__coffee-carousel-slide _3">
+                            <img class="main-favorite__coffee-carousel-item" src="./image/coffee-slider-3.png" alt="Ice coffee">
+                            <h3 class="main-favorite__coffee-carousel-title">Ice coffee</h3>
+                            <p class="main-favorite__coffee-carousel-subtitle">A popular summer drink that tones and invigorates. Prepared from coffee, milk and ice.</p>
+                            <p class="main-favorite__coffee-carousel-price">$4.50</p>
+                        </div>
+                    </div>
+                    <div class="main-favorite__coffee-carousel-controls">
+                        <div class="main-favorite__coffee-carousel-controls_1 control">
+                            <div class="control-progress__bar"></div>
+                        </div>
+                        <div class="main-favorite__coffee-carousel-controls_2 control">
+                            <div class="control-progress__bar"></div>
+                        </div>
+                        <div class="main-favorite__coffee-carousel-controls_3 control">
+                            <div class="control-progress__bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="main-about">
+                <h2 id="about" class="main-about-title">
+                    Resource is <span class=" accent__text">the perfect and cozy place</span> where you can enjoy a variety of hot beverages, relax, catch up with friends, or
+                    get some work done.
+                </h2>
+                <div class="main-about-item-box-wrapper">
+                    <div class="main-about-item-box about-item-box_1">
+                        <img class="main-about-item about-item_1" src="./image/about-1.png" alt="Girl in glasses">
+                    </div>
+                    <div class="main-about-item-box about-item-box_2">
+                        <img class="main-about-item about-item_2" src="./image/about-2.png" alt="Man at laptop">
+                    </div>
+                    <div class="main-about-item-box about-item-box_3">
+                        <img class="main-about-item about-item_3" src="./image/about-3.png" alt="a cup of coffee">
+                    </div>
+                    <div class="main-about-item-box about-item-box_4">
+                        <img class="main-about-item about-item_4" src="./image/about-4.png" alt="happy couple">
+                    </div>
+                </div>
+            </section>
+
+            <section class="main-mobile__app">
+                <div class="main-mobile__app-offer">
+                    <h2 id="mobile__app" class="main-mobile__app-offer-title">
+                        <span class="accent__text">Download</span> our apps to start ordering
+                    </h2>
+                    <p class="main-mobile__app-offer-subtitle">
+                        Download the Resource app today and experience the comfort of ordering your favorite coffee from wherever you are
+                    </p>
+                    <div class="main-mobile__app-offer-btn-wrapper">
+                        <div class="main-mobile__app-offer-btn-app__store">
+                            <div class="btn-app__store-text-wrapper">
+                                <p class="btn-app__store-text">Available on the</p>
+                                <p class="btn-app__store-name">App Store</p>
+                            </div>
+                        </div>
+                        <div class="main-mobile__app-offer-btn-google__play">
+                            <div class="btn-google__play-text-wrapper">
+                                <p class="btn-google__play-text">Available on the</p>
+                                <p class="btn-google__play-name">Google Play</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-mobile__app-screens">
+                    <img class="main-mobile__app-screens-item" src="./image/mobile-screens.png" alt="app screens">
+                </div>
+            </section>
+
+        </main>
+        <footer class="footer">
+
+            <section class="footer-slogan__link">
+                <h2 class="footer-slogan">Sip, Savor, Smile. <span class="accent__text">It’s coffee time!</span></h2>
+                <div class="footer-link-container">
+                    <a class="footer-link" href="https://twitter.com/Hunter_137_13" target="_blank" rel="noopener noreferrer">
+                        <div class="footer-link-wrapper">
+                            <svg class="footer-link-item" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M23 3.01006C23 3.01006 20.9821 4.20217 19.86 4.54006C19.2577 3.84757 18.4573 3.35675 17.567 3.13398C16.6767 2.91122 15.7395 2.96725 14.8821 3.29451C14.0247 3.62177 13.2884 4.20446 12.773 4.96377C12.2575 5.72309 11.9877 6.62239 12 7.54006V8.54006C10.2426 8.58562 8.50127 8.19587 6.93101 7.4055C5.36074 6.61513 4.01032 5.44869 3 4.01006C3 4.01006 -1 13.0101 8 17.0101C5.94053 18.408 3.48716 19.109 1 19.0101C10 24.0101 21 19.0101 21 7.51006C20.9991 7.23151 20.9723 6.95365 20.92 6.68006C21.9406 5.67355 23 3.01006 23 3.01006Z"
+                                    stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </a>
+                    <a class="footer-link" href="https://www.instagram.com/xomyak_po_kli4ke_xoma/" target="_blank" rel="noopener noreferrer">
+                        <div class="footer-link-wrapper">
+                            <svg class="footer-link-item" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
+                                    stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"
+                                    stroke="#E1D4C9" />
+                                <path d="M17.5 6.51L17.51 6.49889" stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </a>
+                    <a class="footer-link" href="https://www.facebook.com/asrarkulov" target="_blank" rel="noopener noreferrer">
+                        <div class="footer-link-wrapper">
+                            <svg class="footer-link-item" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M17 2H14C12.6739 2 11.4021 2.52678 10.4645 3.46447C9.52678 4.40215 9 5.67392 9 7V10H6V14H9V22H13V14H16L17 10H13V7C13 6.73478 13.1054 6.48043 13.2929 6.29289C13.4804 6.10536 13.7348 6 14 6H17V2Z"
+                                    stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="footer-contact">
+                <h2 id="contact__us" class="footer-contact-title">Contact us</h2>
+                <div class="footer-contact-wrapper">
+                    <address>
+                        <p class="footer-contact-link-wrapper">
+                            <a class="footer-contact-link place" href="https://maps.app.goo.gl/DVcMQX5y6AXztEDC9" target="_blank"
+                                rel="noopener noreferrer">
+                                8558 Green Rd., LA
+                            </a>
+                        </p>
+                        <p class="footer-contact-link-wrapper">
+                            <a class="footer-contact-link phone" href="tel:+16035550123">
+                                +1 (603) 555-0123
+                            </a>
+                        </p>
+                    </address>
+                    <p class="footer-contact-schedule schedule">
+                        Mon-Sat: 9:00 AM – 23:00 PM
+                    </p>
+                </div>
+            </section>
+
+        </footer>
+
+    </div>
+</body>
+</html>
