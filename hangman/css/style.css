@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,600;1,400&family=Bitter:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Bitter;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  background-color: #f0f8ff;
+}
+
+.header {
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.header__title {
+  text-align: center;
+  font-size: 32px;
+  line-height: 48px;
+  letter-spacing: 10px;
+}
+
+.header__subtitle {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.game-zone-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.game-zone__gallows_wrapper {
+  position: relative;
+  z-index: 0;
+}
+
+.gallows {
+  width: 200px;
+  height: 400px;
+}
+
+.human {
+  width: 50px;
+  opacity: 0;
+  transition-duration: 1s;
+}
+
+.human__head {
+  position: absolute;
+  top: 118px;
+  left: 147px;
+  height: 50px;
+}
+
+.human__body {
+  position: absolute;
+  top: 166px;
+  left: 147px;
+  height: 70px;
+}
+
+.human__hand_one {
+  position: absolute;
+  top: 173px;
+  left: 131px;
+  height: 40px;
+}
+
+.human__hand_two {
+  position: absolute;
+  top: 173px;
+  left: 163px;
+  height: 40px;
+}
+
+.human__leg_one {
+  position: absolute;
+  top: 233px;
+  left: 131px;
+  height: 40px;
+}
+
+.human__leg_two {
+  position: absolute;
+  top: 233px;
+  left: 163px;
+  height: 40px;
+}
+
+.game-zone__conundrum {
+  text-align: center;
+}
+
+.conundrum-word__letter {
+  margin-right: 10px;
+}
+
+.conundrum-word__letter:last-child {
+  margin-right: 0;
+}
+
+.conundrum-hint {
+  margin-top: 30px;
+}
+
+.conundrum-guess {
+  margin-top: 10px;
+}
+
+.conundrum-keyboard {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.conundrum-keyboard__container {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px #000;
+  padding: 5px;
+}
+
+._disabled {
+  pointer-events: none;
+  background-color: #ccc;
+}
+
+.footer-text {
+  text-align: center;
+  margin: 40px 0;
+}
+
+@media (max-width: 660px) {
+  .game-zone-wrapper {
+    flex-direction: column;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  transform: scale(0);
+  transition-duration: 1s;
+  background-color: #f0f8ffb4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modal._active {
+  visibility: visible;
+  transform: scale(1);
+}
+
+.modal__content {
+  background: radial-gradient(
+    circle,
+    rgba(70, 252, 143, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10%;
+}
+
+.modal__content__new-game {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-top: 1px solid rgb(26, 179, 179);
+  border-bottom: 1px solid rgb(26, 179, 179);
+  border-radius: 0 0 15% 15%;
+  padding: 10px;
+  cursor: pointer;
+  transition-duration: 500ms;
+  -webkit-tap-highlight-color: transparent;
+  outline-color: rgb(26, 179, 179);
+}
+
+@media (hover: hover) {
+  .modal__content__new-game:hover {
+    border: 1px solid rgb(26, 179, 179);
+    background-color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal__content__new-game {
+    border: 1px solid rgb(26, 179, 179);
+    background-color: rgba(255, 255, 255, 0.65);
+  }
+}
